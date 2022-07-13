@@ -17,7 +17,7 @@ router.post('/new', async (req, res) => {
     res.status(201).json({ status: 201, newDestination: createDestination });
 })
 
-router.put('/edit/:id', (req, res) => {
+router.put('/edit/:id', async (req, res) => {
     const updateDestination = await Destination.findByIdAndUpdate(req.params.id, req.body, {
         new: true
     })
