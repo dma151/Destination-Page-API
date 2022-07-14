@@ -29,5 +29,4 @@ router.delete('/remove/:id', async (req, res) => {
     res.status(204).json('Destination deleted')
 })
 
-
 module.exports = router
