@@ -7,7 +7,7 @@ router.get('/', async (req, res) => {
     const db = await connection.getDb();
     // db.collection('destinations').find().toArray()
     const destinations = await db.collection('destinations').find({}).toArray();
-    res.status(200).json({ status: 200, data: destinations });
+    res.render('index.ejs', {destinations : destinations})
 })
 
 router.get('/:id', async (req, res) => {

@@ -1,0 +1,81 @@
+body {
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 400;
+    margin: 0;
+}
+
+.top {
+    vertical-align: middle;
+    text-align: center;
+    padding: 30px 75px;
+}
+.top h1 {
+    font-size: 60px;
+    font-weight: 300;
+    margin-bottom: 0;
+}
+.top h4 {
+    font-size: 20px;
+    margin-top: 5px;
+}
+
+.inputs {
+    margin-left: 75px;
+}
+
+input {
+    height: 20px;
+    border: solid 1px rgb(205, 204, 204);
+    border-radius: 7px;
+    padding: 7px;
+}
+#description {
+    resize: vertical;
+    height: 30px;
+}
+
+.output {
+    margin-left: 50px;
+    margin-right: 75px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+li {
+    padding: 15px;
+    margin: 10px;
+    border: solid 1px rgb(205, 204, 204);
+    border-radius: 15px;
+    max-width: 202px;
+    overflow-wrap: break-word;
+}
+
+img {
+    max-width: 200px;
+    height: 150px;
+}
+
+h4 {
+    margin: 15px 0;
+}
+
+button {
+    color: white;
+    font-size: 15px;
+    border-radius: 7px;
+    padding: 5px;
+    border: none;
+}
+.add {
+    background-color: green;
+    margin-top: 15px;
+}
+.edit {
+    background-color: #3d8ef9;
+    margin-right: 100px;
+}
+.delete {
+    background-color: red;
+}

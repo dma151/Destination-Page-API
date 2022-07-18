@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link href="/assets/styles-main.css" rel="stylesheet" type="text/css" />
+        <link href="/assets/styles-grid.css" rel="stylesheet" type="text/css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400&display=swap" rel="stylesheet">
+    </head>
+
+    <body>
+        <div class="container">
+            <header>
+                <div class="top">
+                    <h1>Vacation Destinations WishList</h1>
+                    <h4>Found exciting places to visitation on your next vacation? Use the form below to add them to your wishlist</h4>
+                </div>
+            </header>
+            <div class="inputs">
+                <form id="user" onsubmit="return false">
+                    <h4>Destination name</h4>
+                    <input id="destination" type="text" placeholder="Enter the name of the destination!" required>
+                    <h4>Location</h4>
+                    <input id="location" type="text" placeholder="Enter a location!" required>
+                    <!-- <h4>Photo</h4>
+                    <input id="photo" type="text" placeholder="Enter an image url!"> -->
+                    <h4>Description</h4>
+                    <input id="description" type="text" placeholder="Enter a quick description!">
+                    </br>
+                    <button class="add">Add to list</button>
+                </form>
+            </div>
+            <div class="output">
+                <h2>My WishList</h2>
+                <ul class="destinationList">
+                    <% for (let i = 0; i < destinations.length; i++) {%>
+                        <li id="<%= destinations[i]._id %>">
+                            <img src="<%= destinations[i].url %>" class="cardImage">
+                            <h3 class="cardheader"><%= destinations[i].name %></h3>
+                            <p class="cardLocation"><%= destinations[i].location %></p>
+                            <p class="cardDescription"><%= destinations[i].description %></p>
+                            <button class="edit">Edit</button>
+                            <button class="delete">Delete</button>
+                        </li>
+                    <% } %>
+                </ul>
+            </div>
+            <script>
+                const form = document.querySelector("#user");
+                const destinationInput = document.getElementById("destination");
+                const locationInput = document.getElementById("location");
+                const photoInput = document.getElementById("photo");
+                const descriptionInput = document.getElementById("description");
+            </script>
+            <script src="/main.js"></script>
+        </div>
+    </body>
+</html>
