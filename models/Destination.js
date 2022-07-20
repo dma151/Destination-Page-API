@@ -1,10 +1,10 @@
+const mongoose = require('../db/connection')
 
+const destinationSchema = new mongoose.Schema({
+    name: { type: String, required: true },
+    location: { type: String, required: true },
+    url: { type: String, required: true },
+    description: String
+})
 
-// const Destination = mongoose.newSchema( {
-//     name: String,
-//     location: String,
-//     url: String,
-//     description: String
-// })
-
-// module.exports = Destination
+module.exports = mongoose.model('Destination', destinationSchema)
