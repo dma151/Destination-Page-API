@@ -7,7 +7,7 @@ const deleteButtons = document.querySelectorAll(".delete");
 
 form.addEventListener("submit", async () => {
   const imageSrc = await findImage();
-  const call = await fetch("http://localhost:3000/new", {
+  const call = await fetch("https://vacation-destination-api.herokuapp.com/new", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
@@ -51,7 +51,7 @@ for (let i = 0; i < editButtons.length; i++) {
     }
 
     const selected = e.target.parentElement.getAttribute("id");
-    fetch(`http://localhost:3000/edit/${selected}`, {
+    fetch(`https://vacation-destination-api.herokuapp.com/edit/${selected}`, {
       method: "put",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -70,7 +70,7 @@ for (let i = 0; i < deleteButtons.length; i++) {
   deleteButtons[i].addEventListener("click", (e) => {
     const selected = e.target.parentElement.getAttribute("id");
     console.log(selected);
-    fetch(`http://localhost:3000/remove/${selected}`, {
+    fetch(`https://vacation-destination-api.herokuapp.com/remove/${selected}`, {
       method: "delete",
     })
       .then((response) => window.location.reload(true))
