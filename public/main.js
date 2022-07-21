@@ -1,6 +1,7 @@
 // const form = document.querySelector("#user")
 const editButtons = document.querySelectorAll(".edit");
 const deleteButtons = document.querySelectorAll(".delete");
+const detailsButtons = document.querySelectorAll(".details");
 // const destinationInput = document.getElementById("destination");
 // const locationInput = document.getElementById("location");
 // const descriptionInput = document.getElementById("description");
@@ -25,7 +26,7 @@ form.addEventListener("submit", async () => {
 });
 
 for (let i = 0; i < editButtons.length; i++) {
-  editButtons[i].addEventListener("click", (_) => {
+  editButtons[i].addEventListener("click", async () => {
     const name = prompt("Enter new name");
     const location = prompt("Enter new location");
     const description = prompt("Enter new description");
@@ -51,32 +52,40 @@ for (let i = 0; i < editButtons.length; i++) {
     }
 
     const selected = e.target.parentElement.getAttribute("id");
-    fetch(`http://localhost:3000/edit/${selected}`, {
+    const imageUrl = await fetch(
+      `https://api.unsplash.com/search/photos?page=1&query=${newName} ${newLocation}&client_id=${apiKey}`
+    );
+
+    const call = await fetch(`http://localhost:3000/edit/${selected}`, {
       method: "put",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         name: newName,
         location: newLocation,
-        url: e.target.parentElement.querySelector(".cardImage").innerTexte,
+        url: imageUrl,
         description: newDescription,
       }),
-    })
-      .then((response) => window.location.reload(true))
-      .catch((e) => console.error(e));
+    });
+    const reload = window.location.reload(true);
   });
-};
+}
 
 for (let i = 0; i < deleteButtons.length; i++) {
-  deleteButtons[i].addEventListener("click", (e) => {
+  deleteButtons[i].addEventListener("click", async () => {
     const selected = e.target.parentElement.getAttribute("id");
     console.log(selected);
-    fetch(`http://localhost:3000/remove/${selected}`, {
+    const call = await fetch(`http://localhost:3000/remove/${selected}`, {
       method: "delete",
-    })
-      .then((response) => window.location.reload(true))
-      .catch((e) => console.error(e));
+    });
+    const reload = window.location.reload(true);
   });
-};
+}
+
+for (let i = 0; i < detailsButtons.length; i++) {
+  detailsButtons[i].addEventListener("click", async () => {
+    window.open("http://localhost:3000/details", "_blank");
+  });
+}
 
 function findImage() {
   const apiKey = "IamxVhyO4gKPFbijEFVv3NQRN7EkQ7T6AngMOVTfBes";
